@@ -60,7 +60,8 @@
     "smooth-scroll": "^16.1.0",
     "styled-components": "^4.4.0",
     "tsparticles-engine": "^2.12.0",
-    "tsparticles-preset-fire": "^2.12.0"
+    "tsparticles-preset-fire": "^2.12.0",
+    "video-react": "^0.16.0"
   },
   "devDependencies": {
     "@upstatement/eslint-config": "0.4.3",
