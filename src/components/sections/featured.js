@@ -344,7 +344,7 @@ const Featured = () => {
                 ) : (
                   <div className="project-image">
                     <Player src="./Video Final.mp4" playsInline autoPlay />
-                    {/* <YouTube
+                    {/* <YouTube  
                       videoId="Co48ShC4_S8"
                       opts={{
                         playerVars: {
