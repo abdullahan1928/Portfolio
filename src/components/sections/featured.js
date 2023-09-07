@@ -6,6 +6,7 @@ import sr from '@utils/sr';
 import { srConfig } from '@config';
 import { Icon } from '@components/icons';
 import { Player } from 'video-react';
+// import YouTube from 'react-youtube';
 
 const StyledProject = styled.div`
   display: grid;
@@ -342,7 +343,21 @@ const Featured = () => {
                   </div>
                 ) : (
                   <div className="project-image">
-                    <Player playsInline src="../../Video Final.mp4" autoPlay />
+                    <Player src="./Video Final.mp4" playsInline autoPlay />
+                    {/* <YouTube videoId="Co48ShC4_S8"
+                      opts={{
+                        playerVars: {
+                          autoplay: 1,
+                          controls: 0,
+                          modestbranding: 0,
+                          rel: 0,
+                          showinfo: 0,
+                          loop: 1,
+                          disablekb: 1,
+                          iv_load_policy: 3,
+                        },
+                      }}
+                    /> */}
                   </div>
                 )}
               </StyledProject>
