@@ -12,4 +12,4 @@ tech:
 showInProjects: true
 ---
 
-THIS DASHBOARD CONTINUOUSLY QUERIES PUBLIC DATABASES AND UPDATES CASES FOR ALL COUNTRIES.
+E-commerce website built with Angular and Firebase. Users can sign in with Google, add items to cart, and checkout with Stripe.

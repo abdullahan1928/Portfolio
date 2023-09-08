@@ -14,57 +14,15 @@ const StyledProject = styled.div`
   grid-template-columns: repeat(12, 1fr);
   align-items: center;
 
-  &:not(:last-of-type) {
-    margin-bottom: 100px;
+  margin-bottom: 100px;
 
-    @media (max-width: 768px) {
-      margin-bottom: 70px;
-    }
-
-    @media (max-width: 480px) {
-      margin-bottom: 30px;
-    }
+  @media (max-width: 768px) {
+    margin-bottom: 70px;
+    display: block;
   }
 
-  &:nth-of-type(odd) {
-    .project-content {
-      grid-column: 7 / -1;
-      text-align: right;
-
-      @media (max-width: 1080px) {
-        grid-column: 5 / -1;
-      }
-      @media (max-width: 768px) {
-        grid-column: 1 / -1;
-        padding: 40px 40px 30px;
-      }
-      @media (max-width: 480px) {
-        padding: 25px 25px 20px;
-      }
-    }
-    .project-tech-list {
-      justify-content: flex-end;
-
-      li {
-        margin: 0 0 5px 20px;
-
-        @media (max-width: 768px) {
-          margin: 0 0 5px 10px;
-        }
-      }
-    }
-    .project-links {
-      justify-content: flex-end;
-      margin-left: 0;
-      margin-right: -10px;
-    }
-    .project-image {
-      grid-column: 1 / 8;
-
-      @media (max-width: 768px) {
-        grid-column: 1 / -1;
-      }
-    }
+  @media (max-width: 480px) {
+    margin-bottom: 30px;
   }
 
   .project-content {
@@ -194,12 +152,6 @@ const StyledProject = styled.div`
     position: relative;
     z-index: 1;
 
-    @media (max-width: 768px) {
-      grid-column: 1 / -1;
-      height: 100%;
-      opacity: 0.25;
-    }
-
     a {
       width: 100%;
       background-color: var(--green);
@@ -243,6 +195,65 @@ const StyledProject = styled.div`
         width: auto;
         height: 100%;
         filter: grayscale(100%) contrast(1) brightness(80%);
+      }
+    }
+
+    @media (max-width: 768px) {
+      grid-column: 1 / -1;
+      height: 100%;
+
+      a {
+        background: transparent;
+
+        &:before,
+        .img {
+          background: transparent;
+          filter: none;
+        }
+      }
+    }
+  }
+
+  &:nth-of-type(odd) {
+    .project-content {
+      grid-column: 7 / -1;
+      text-align: right;
+
+      @media (max-width: 1080px) {
+        grid-column: 5 / -1;
+      }
+      @media (max-width: 768px) {
+        grid-column: 1 / -1;
+        padding: 40px 40px 30px;
+      }
+      @media (max-width: 480px) {
+        padding: 25px 25px 20px;
+      }
+    }
+
+    .project-tech-list {
+      justify-content: flex-end;
+
+      li {
+        margin: 0 0 5px 20px;
+
+        @media (max-width: 768px) {
+          margin: 0 0 5px 10px;
+        }
+      }
+    }
+
+    .project-links {
+      justify-content: flex-end;
+      margin-left: 0;
+      margin-right: -10px;
+    }
+
+    .project-image {
+      grid-column: 1 / 8;
+
+      @media (max-width: 768px) {
+        grid-column: 1 / -1;
       }
     }
   }

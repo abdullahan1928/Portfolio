@@ -16,4 +16,4 @@ tech:
 showInProjects: true
 ---
 
-This project demonstrate the process of getting started with Facebook FAIR's detectron2 project on windows 10 without any Nvidia GPU..
+Karigar is a web application that connects the local artisans to the customers. It is a platform where the artisans can showcase their products and the customers can buy them.
