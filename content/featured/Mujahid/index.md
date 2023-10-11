@@ -2,7 +2,7 @@
 date: '3'
 title: 'Mujahid Hospital'
 cover: './mujahid.png'
-external: 'https://mujahid-website.vercel.app/'
+external: 'https://www.mujahidhospital.org.pk/'
 tech:
   - HTML / CSS
   - Javascript
