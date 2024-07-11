@@ -1,5 +1,5 @@
 {
-  "name": "Portfolio-Website",
+  "name": "portfolio",
   "description": "Personal Website",
   "version": "1.0.0",
   "author": "Abdullah Anwar",
@@ -9,9 +9,9 @@
   "license": "MIT",
   "scripts": {
     "build": "gatsby build",
-    "develop": "gatsby develop",
+    "dev": "gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
-    "start": "npm run develop",
+    "start": "npm run dev",
     "serve": "gatsby serve",
     "clean": "gatsby clean"
   },

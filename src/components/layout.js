@@ -1,13 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styled, { ThemeProvider } from 'styled-components';
-import { Head, Loader, Nav, Social, Email, Footer } from '@components';
+import { Head, Loader, Nav, Social, Email } from '@components';
 import { GlobalStyle, theme } from '@styles';
-import Image from '../images/image.jpg';
 
-// https://medium.com/@chrisfitkin/how-to-smooth-scroll-links-in-gatsby-3dc445299558
 if (typeof window !== 'undefined') {
-  // eslint-disable-next-line global-require
   require('smooth-scroll')('a[href*="#"]');
 }
 
@@ -40,6 +37,7 @@ const SkipToContentLink = styled.a`
     z-index: 99;
   }
 `;
+
 const StyledContent = styled.div`
   display: flex;
   flex-direction: column;
@@ -47,7 +45,6 @@ const StyledContent = styled.div`
 
   #content {
     background-color: var(--dark-navy);
-    background-image: url(${Image});
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -55,9 +52,60 @@ const StyledContent = styled.div`
   }
 `;
 
+const GoUpButton = styled.button`
+  position: fixed;
+  bottom: 40px;
+  right: 75px;
+  color: var(--white);
+  border: none;
+  padding: 20px;
+  border-radius: 9999px;
+  cursor: pointer;
+  z-index: 999;
+  transition: opacity 0.3s ease;
+  opacity: ${({ show }) => (show ? 1 : 0)};
+  pointer-events: ${({ show }) => (show ? 'auto' : 'none')};
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--green-tint);
+
+  &:hover {
+    background-color: var(--green);
+  }
+`;
+
+const ArrowUpIcon = styled.svg`
+  width: 24px;
+  height: 24px;
+  fill: var(--white);
+`;
+
 const Layout = ({ children, location }) => {
   const isHome = location.pathname === '/';
   const [isLoading, setIsLoading] = useState(isHome);
+  const [showGoUpButton, setShowGoUpButton] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 400) {
+        setShowGoUpButton(true);
+      } else {
+        setShowGoUpButton(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const handleGoUpClick = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+    history.replaceState({}, document.title, window.location.pathname);
+  };
 
   useEffect(() => {
     if (isLoading) {
@@ -75,7 +123,6 @@ const Layout = ({ children, location }) => {
     }
   }, [isLoading]);
 
-  // Sets target="_blank" rel="noopener noreferrer" on external links
   const handleExternalLinks = () => {
     const allLinks = Array.from(document.querySelectorAll('a'));
     if (allLinks.length > 0) {
@@ -116,6 +163,12 @@ const Layout = ({ children, location }) => {
               </div>
             </StyledContent>
           )}
+
+          <GoUpButton show={showGoUpButton} onClick={handleGoUpClick}>
+            <ArrowUpIcon xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path d="M12 2l10 10h-6v10h-8v-10h-6z" />
+            </ArrowUpIcon>
+          </GoUpButton>
         </ThemeProvider>
       </div>
     </>

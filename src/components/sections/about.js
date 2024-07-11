@@ -1,167 +1,114 @@
 import React, { useEffect, useRef } from 'react';
-import { useStaticQuery, graphql } from 'gatsby';
-import Img from 'gatsby-image';
 import styled from 'styled-components';
 import { srConfig } from '@config';
 import sr from '@utils/sr';
+import { Icon } from '@components/icons';
 
 const StyledAboutSection = styled.section`
   max-width: 900px;
+  margin: 0 auto;
 
   .inner {
     display: grid;
     grid-template-columns: 3fr 2fr;
     grid-gap: 50px;
+    justify-content: center;
 
     @media (max-width: 768px) {
       display: block;
     }
   }
 `;
+
 const StyledText = styled.div`
   p {
     color: var(--light-white);
   }
-
-  ul.skills-list {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(140px, 200px));
-    padding: 0;
-    margin: 20px 0 0 0;
-    overflow: hidden;
-    list-style: none;
-
-    li {
-      position: relative;
-      margin-bottom: 10px;
-      padding-left: 20px;
-      font-family: var(--font-mono);
-      font-size: var(--fz-sm);
-      color: var(--light-white);
-      letter-spacing: 0.08em;
-
-      &:before {
-        content: '▹';
-        position: absolute;
-        left: 0;
-        color: var(--green);
-        font-size: var(--fz-md);
-        line-height: 12px;
-      }
-    }
-  }
 `;
-const StyledPic = styled.div`
-  position: relative;
-  max-width: 300px;
+
+const StyledLinks = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 25px;
 
   @media (max-width: 768px) {
-    margin: 50px auto 0;
-    width: 70%;
+    margin-top: 50px;
   }
 
-  .wrapper {
-    ${({ theme }) => theme.mixins.boxShadow};
-    display: block;
-    position: relative;
+  .social {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 20px;
     width: 100%;
-    border-radius: var(--border-radius);
-    background-color: var(--green);
 
-    &:hover,
-    &:focus {
-      background: transparent;
-      outline: 0;
+    a {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      color: var(--green);
+      border: 1px solid var(--green);
+      padding: 20px;
+      border-radius: 50%;
 
-      &:after {
-        top: 15px;
-        left: 15px;
+      &:hover,
+      &:focus {
+        transform: translateY(-3px);
+        color: var(--light-white);
       }
 
-      .img {
-        filter: none;
-        mix-blend-mode: normal;
+      svg {
+        width: 20px;
+        height: 20px;
+      }
+
+      &:first-of-type {
+        margin-right: 20px;
       }
     }
+  }
 
-    .img {
-      position: relative;
-      border-radius: var(--border-radius);
-      mix-blend-mode: multiply;
-      filter: grayscale(100%) contrast(1);
-      transition: var(--transition);
-    }
+  .experience {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
 
-    &:before,
-    &:after {
-      content: '';
-      display: block;
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      border-radius: var(--border-radius);
-      transition: var(--transition);
-    }
+    div {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
 
-    &:before {
-      top: 0;
-      left: 0;
-      background-color: var(--navy);
-      mix-blend-mode: screen;
-    }
+      h4 {
+        color: var(--green);
+        font-size: 36px;
+      }
 
-    &:after {
-      border: 2px solid var(--green);
-      top: 20px;
-      left: 20px;
-      z-index: -1;
+      p {
+        color: var(--light-white);
+      }
     }
+  }
+
+  button {
+    ${({ theme }) => theme.mixins.bigButton};
+    width: 100%;
   }
 `;
 
 const About = () => {
-  const data = useStaticQuery(graphql`
-    query {
-      avatar: file(sourceInstanceName: { eq: "images" }, relativePath: { eq: "me.jpg" }) {
-        childImageSharp {
-          fluid(maxWidth: 500, traceSVG: { color: "#64ffda" }) {
-            ...GatsbyImageSharpFluid_withWebp_tracedSVG
-          }
-        }
-      }
-    }
-  `);
-
   const revealContainer = useRef(null);
 
   useEffect(() => {
     sr.reveal(revealContainer.current, srConfig());
   }, []);
-
-  const skills = [
-    'HTML & (S)CSS',
-    'JavaScript (ES6+)',
-    'Angular',
-    'React',
-    'Python',
-    'Node.js',
-    'Express',
-    'NextJS',
-    'NestJS',
-    'Prisma',
-    'Git',
-    'Docker',
-    'Kubernetes',
-    'AWS',
-    'Linux',
-    'Bash',
-    'SQL',
-    'MongoDB',
-    'PostgreSQL',
-    'MySQL',
-    'Firebase',
-    'Supabase',
-  ];
 
   return (
     <StyledAboutSection id="about" ref={revealContainer}>
@@ -171,39 +118,58 @@ const About = () => {
         <StyledText>
           <div>
             <p>
-              Hello! I'm Abdullah, a full stack software developer based in Islamabad, PK. I enjoy
-              creating things that live on the internet, whether that be websites, applications, or
-              anything in between. My goal is to always build products that provide pixel-perfect,
-              performant experiences.
+              Hi, I'm Abdullah Anwar, a passionate full-stack software developer based in Islamabad,
+              Pakistan. I thrive on crafting exceptional digital experiences, from sleek websites to
+              complex applications. My mission is to deliver pixel-perfect, high-performance
+              solutions that leave a lasting impact.
             </p>
+
+            {/* <p>
+              With a strong focus on system design and scalability, I excel in building robust,
+              large-scale applications. I've gained invaluable experience working both independently
+              as a freelancer and collaboratively in diverse teams. This journey has equipped me
+              with a deep understanding of engineering principles and a knack for tackling
+              challenging projects.
+            </p> */}
 
             <p>
-              I build things on the internet and love building large scale applications with system
-              design in mind. I have worked in teams and also individually as a freelancer and got
-              valuable learning experiences.
+              Having graduated from&nbsp;
+              <a href="https://nust.edu.pk/">NUST</a>, I've had the privilege to contribute to
+              engineering, development, and research initiatives at various companies. This has
+              exposed me to a wide array of captivating projects, fueling my passion for innovation
+              and continuous learning.
             </p>
-
-            <p>
-              I am still studying in my undergraduate degree at{' '}
-              <a href="https://nust.edu.pk/">National University of Sciences & Technology (NUST)</a>
-              , I have worked in engineering, development and research teams at{' '}
-              <a href="https://www.linkedin.com/in/abdullahan1928/">Various Companies</a> where I
-              work on a wide variety of interesting and meaningful projects on a daily basis.
-            </p>
-
-            <p>Here are a few technologies I've been working with recently:</p>
           </div>
-
-          <ul className="skills-list">
-            {skills && skills.map((skill, i) => <li key={i}>{skill}</li>)}
-          </ul>
         </StyledText>
 
-        <StyledPic>
-          <div className="wrapper">
-            <Img fluid={data.avatar.childImageSharp.fluid} alt="Avatar" className="img" />
-          </div>
-        </StyledPic>
+        <div>
+          <StyledLinks>
+            <div className="social">
+              <a href="https://github.com/abdullahan1928" aria-label="GitHub">
+                <Icon name="GitHub" />
+                {/* <p>Github</p> */}
+              </a>
+              <a href="https://www.linkedin.com/in/abdullahan1928" aria-label="Linkedin">
+                <Icon name="Linkedin" />
+                {/* <p>Linkedin</p> */}
+              </a>
+            </div>
+            <div className="experience">
+              <div>
+                <h4>2</h4>
+                <p>Years Experience</p>
+              </div>
+              <div>
+                <h4>10+</h4>
+                <p>Completed Projects</p>
+              </div>
+            </div>
+            <button onClick={() => window.open('path/to/your/cv.pdf', '_blank')}>
+              <p> Download CV</p>
+              {/* <Icon name="Download" /> */}
+            </button>
+          </StyledLinks>
+        </div>
       </div>
     </StyledAboutSection>
   );

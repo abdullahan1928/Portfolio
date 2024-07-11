@@ -2,6 +2,7 @@
 date: '7'
 title: 'FlexiLearn'
 external: 'https://www.flexilearn.net/'
+github: 'https://github.com/solutionsCorridor/flexilearn/'
 tech:
   - NextJS
   - NestJS

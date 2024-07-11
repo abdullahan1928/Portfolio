@@ -1,5 +1,5 @@
 ---
-date: '2'
+date: '4'
 title: 'Karigar'
 cover: './karigar.png'
 github: 'https://github.com/abdullahan1928/Karigar'

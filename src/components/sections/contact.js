@@ -8,6 +8,9 @@ const StyledContactSection = styled.section`
   margin: 0 auto 100px;
   text-align: center;
   ${({ theme }) => theme.mixins.boxShadow};
+  border: 1px solid #0a192f;
+  border-radius: 7px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 
   &:before {
     content: '';
@@ -165,11 +168,12 @@ const StyledContactSection = styled.section`
   .email-link {
     ${({ theme }) => theme.mixins.bigButton};
     margin-top: 50px;
-    transition: background-color 0.5s, transform 0.5s;
+    transition: background-color 0.05s, transform 0.05s;
     &:hover,
     &:focus,
     &:active {
-      background-color: var(--dark-navy);
+      background-color: var(--green);
+      color: var(--navy);
       transform: translateY(-3px);
     }
   }
