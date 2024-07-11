@@ -100,6 +100,15 @@ const StyledLinks = styled.div`
   button {
     ${({ theme }) => theme.mixins.bigButton};
     width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    svg {
+      width: 20px;
+      height: 20px;
+    }
   }
 `;
 
@@ -165,8 +174,8 @@ const About = () => {
               </div>
             </div>
             <button onClick={() => window.open('path/to/your/cv.pdf', '_blank')}>
+              <Icon name="Download" />
               <p> Download CV</p>
-              {/* <Icon name="Download" /> */}
             </button>
           </StyledLinks>
         </div>
