@@ -1,7 +1,7 @@
 ---
 date: '1'
 title: 'BitWaly'
-cover: './bitwaly.png'
+cover: ./bitwaly.png
 github: 'https://github.com/abdullahan1928/BitWaly'
 external: 'https://crownclothingangular1928.netlify.app/'
 tech:
